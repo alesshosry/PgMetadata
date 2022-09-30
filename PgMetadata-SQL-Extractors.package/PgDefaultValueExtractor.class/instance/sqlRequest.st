@@ -1,10 +1,11 @@
 parameters
 sqlRequest
-	^'SELECT 
+	^'
+	SELECT 
 	adrelid as table_oid,
 	adnum as num_column,
-	adsrc as content,
+	pg_get_expr(adbin, adrelid) as content,
 	adbin as nodes 
 FROM pg_attrdef
-WHERE adrelid = {1} 
+WHERE adrelid = {1}  
 '

@@ -4,9 +4,9 @@ extract
 	
 	self database getTables do: [ :table |
 		| default pharoclass tree |
-		(self runSQLWith: { table oid }) do: [ :result |
-			ownerTable := self database tableReferenceOf: (result atName: #table_oid).
-			ownerColumn := ownerTable columnAt: (result atName: #num_column).
+		(self runSQLWith: { table oid }) recordsAsDictionaries  do: [ :result |
+			ownerTable := self database tableReferenceOf: (result at: #table_oid).
+			ownerColumn := ownerTable columnAt: (result at: #num_column).
 			
 			default := SqlDefaultValue  
 				oid: nil 
@@ -26,7 +26,7 @@ extract
 				ifNil: [ default content: (result atName: #content) ] 
 				ifNotNil: [ default content: (pharoclass pgTypeConvert: (result atName: #content)) ]."
 			
-			default content: (result atName: #content).
+			default content: (result at: #content).
 			
 			ownerColumn defaultValue: default.
 			
