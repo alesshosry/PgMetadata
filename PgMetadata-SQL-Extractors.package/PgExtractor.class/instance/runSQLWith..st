@@ -1,3 +1,3 @@
 action
 runSQLWith: aParametersList
-	^self connection execute: (self sqlRequest format: aParametersList)
+	^self connection query: (self sqlRequest format: aParametersList)

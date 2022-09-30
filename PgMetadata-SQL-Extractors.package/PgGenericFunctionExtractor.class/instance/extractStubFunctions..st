@@ -1,26 +1,26 @@
 action
 extractStubFunctions: isStub
-	self runSQL
+	self runSQL recordsAsDictionaries 
 		do: [ :func | 
 			| function resultType language namespace owner |
 			owner := isStub ifTrue: [ nil ] ifFalse: [ self database ].
-			function := (func atName: #prorettypename) = 'trigger'
-				ifTrue: [ SqlTriggerFunction oid: (func atName: #oid) name: (func atName: #proname) owner: owner stub: isStub ]
+			function := (func at: #prorettypename) = 'trigger'
+				ifTrue: [ SqlTriggerFunction oid: (func at: #oid) name: (func at: #proname) owner: owner stub: isStub ]
 				ifFalse: [ self extractNonTriggerFunctionFrom: func withOwner: owner toBeStub: isStub ].
-			function code: (func atName: 'prosrc').
+			function code: (func at: 'prosrc').
 			language := SqlLanguage
-				oid: (func atName: #prolang)
-				name: (func atName: #prolangname)
+				oid: (func at: #prolang)
+				name: (func at: #prolangname)
 				owner: owner.
 			function language: (self addUniqueObject: language).
 			namespace := SqlNamespace
-				oid: (func atName: #pronamespace)
-				name: (func atName: #pronamespacename)
+				oid: (func at: #pronamespace)
+				name: (func at: #pronamespacename)
 				owner: owner.
 			function namespace: (self addUniqueObject: namespace).
 			resultType := SqlDatatype
-				oid: (func atName: #prorettype)
-				name: ((func atName: #proretset) ifTrue: [ 'setof ' ] ifFalse: [ '' ]) , (func atName: #prorettypename)
+				oid: (func at: #prorettype)
+				name: ((func at: #proretset) ifTrue: [ 'setof ' ] ifFalse: [ '' ]) , (func at: #prorettypename)
 				owner: owner.
 			function returnType: (self addUniqueObject: resultType).
 			self addUniqueObject: function ]

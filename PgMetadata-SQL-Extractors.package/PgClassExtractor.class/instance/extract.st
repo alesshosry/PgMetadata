@@ -1,11 +1,11 @@
 actions
 extract
-	self runSQL
+	self runSQL recordsAsDictionaries 
 		do: [ :schema | 
 			self database
 				addObject:
 					(self sqlObjectClass 
-						oid: (schema atName: #oid)
-						name: (schema atName: #relname)
+						oid: (schema at: #oid)
+						name: (schema at: #relname)
 						owner: self database
-						namespace: (self database schemaReferenceOf: (schema atName: #relnamespace))) ]
+						namespace: (self database schemaReferenceOf: (schema at: #relnamespace))) ]

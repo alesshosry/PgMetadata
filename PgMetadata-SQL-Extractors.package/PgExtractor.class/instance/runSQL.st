@@ -1,3 +1,4 @@
 action
 runSQL
-	^self connection execute: (self sqlRequest)
+
+	^self connection query: (self sqlRequest)

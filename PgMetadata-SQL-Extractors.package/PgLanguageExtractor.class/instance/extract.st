@@ -1,5 +1,5 @@
 action
 extract
-	self runSQL do: [ :language | 
-		self database addObject: (SqlLanguage oid: (language atName: #oid) name: (language atName: #lanname) owner: self database) 
+	self runSQL recordsAsDictionaries  do: [ :language | 
+		self database addObject: (SqlLanguage oid: (language at: #oid) name: (language at: #lanname) owner: self database) 
 	]

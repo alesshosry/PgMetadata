@@ -1,22 +1,24 @@
 action
 extractMetaInformations
 	"extraction of datatypes"
-
-	(self database connection
-		execute: 'SELECT oid,typname,typnamespace FROM pg_type')
+	| dbCon |
+	dbCon := (self database connection
+		query: 'SELECT oid,typname,typnamespace FROM pg_type') recordsAsDictionaries.
+		
+		dbCon  
 		do: [ :datatype | 
+			
 			self datatypes
 				add:
 					(SqlDatatype
-						oid: (datatype atName: #oid) asInteger
-						name: (datatype atName: #typname)
-						owner: self database) ].
-
+						oid: (datatype at: #oid) asInteger
+						name: (datatype at: #typname)
+						owner: self database) ]. 
 	"getting version"
-	(self database connection execute: 'SHOW server_version')
+	(self database connection query: 'SHOW server_version') recordsAsDictionaries 
 		do: [ :versionString | 
-			| versionParts major |
-			versionParts := (versionString atIndex: 1) splitOn: $..
+			| versionParts major |			
+			versionParts := (versionString at: 'server_version') splitOn: $..
 			major := versionParts first asNumber.
 			self
 				databaseMajorVersion:

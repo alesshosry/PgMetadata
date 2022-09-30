@@ -1,5 +1,5 @@
 action
 extract
-	self runSQL do: [ :schema | 
-		self database addObject: (SqlNamespace oid: (schema atName: #oid) name: (schema atName: #nspname) owner: self database) 
+	self runSQL recordsAsDictionaries  do: [ :schema | 
+		self database addObject: (SqlNamespace oid: (schema at: #oid) name: (schema at: #nspname) owner: self database) 
 	].
