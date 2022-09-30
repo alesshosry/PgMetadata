@@ -7,5 +7,5 @@ defineDependencies: spec
 				  repository: 'github://juliendelplanque/garage:master';
 				  loads: #( 'postgresV2' ) ];"
 		  baseline: 'P3'
-		  with: [ spec repository: 'github://svenvc/P3:master' ];
+		  with: [ spec repository: 'github://alesshosry/P3:master' ];
 		  yourself
