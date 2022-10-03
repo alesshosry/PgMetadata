@@ -7,7 +7,7 @@ In Pharo 10 [Garage](https://github.com/pharo-rdbms/garage) is not working anymo
 The Garage itself has last commit on Sep 27, 2018.
 This version is forked from deemOn's version and includes the below changes:
 1.	Ability to connect to Postgres 12+
-2.	Some methods were still dependent of Garage, so I fully replaced it by [P3] (https://github.com/svenvc/P3).
+2.	Some methods were still dependent of Garage, so I fully replaced it by [P3] (https://github.com/alesshosry/P3)
 
 ## How to install
 
