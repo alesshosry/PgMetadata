@@ -5,17 +5,27 @@ Extracts the PostgreSQL metadata and build an SQL Model (In progress).
 
 In Pharo 10 [Garage](https://github.com/pharo-rdbms/garage) is not working anymore as it relies on the Text conversion classes which had removed from the image.
 The Garage itself has last commit on Sep 27, 2018.
-So I decided to switch to the P3 library, which is active and healthy project in 2022.
-All work is done in the development branch and will be released with v10.0.0 tag when ready.
+This version is forked from deemOn's version and includes the below changes:
+1.	Ability to connect to Postgres 12+
+2.	Some methods were still dependent of Garage, so I fully replaced it by [P3] (https://github.com/svenvc/P3).
 
 ## How to install
 
-### Pharo 10
+### Pharo 10 and above + Postgres 12 and above
 
 ```
 Metacello new
     baseline: 'PgMetadata';
-    repository: 'github://deem0n/PgMetadata:development';
+    repository: 'github://alesshosry/PgMetadata:development';
+    load
+```
+
+### Pharo 10 and above + Postgres 11 and less
+
+```
+Metacello new
+    baseline: 'PgMetadata';
+    repository: 'github://deemOn/PgMetadata:development';
     load
 ```
 
