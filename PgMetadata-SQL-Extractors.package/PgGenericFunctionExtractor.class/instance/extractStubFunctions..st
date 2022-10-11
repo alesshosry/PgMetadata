@@ -1,5 +1,5 @@
 action
-extractStubFunctions: isStub
+extractStubFunctions: isStub 
 	self runSQL recordsAsDictionaries 
 		do: [ :func | 
 			| function resultType language namespace owner |
