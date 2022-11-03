@@ -1,3 +1,4 @@
 tests
 testTypeUpdate
-	self assert: (trigger isUpdate).
+
+	self assert: trigger isUpdate

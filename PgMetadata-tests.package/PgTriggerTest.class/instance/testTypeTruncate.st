@@ -1,3 +1,4 @@
 tests
 testTypeTruncate
-	self assert: (trigger isTruncate = false).
+
+	self deny: trigger isTruncate

@@ -1,3 +1,4 @@
 tests
 testTypeStatement
-	self assert: (trigger isStatement = false).
+
+	self deny: trigger isStatement

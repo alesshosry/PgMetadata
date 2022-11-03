@@ -1,3 +1,4 @@
 tests
 testTypeRow
-	self assert: (trigger isRow).
+
+	self assert: trigger isRow

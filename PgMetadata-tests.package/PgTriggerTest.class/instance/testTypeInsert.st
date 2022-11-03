@@ -1,3 +1,4 @@
 tests
 testTypeInsert
-	self assert: (trigger isInsert).
+
+	self assert: trigger isInsert
