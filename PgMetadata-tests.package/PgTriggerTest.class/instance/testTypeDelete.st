@@ -1,3 +1,4 @@
 tests
 testTypeDelete
-	self assert: (trigger isDelete = false).
+
+	self deny: trigger isDelete

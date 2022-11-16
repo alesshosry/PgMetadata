@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "<historical>",
+	"commentStamp" : "",
 	"super" : "TestCase",
 	"category" : "PgMetadata-tests",
 	"classinstvars" : [ ],
@@ -7,16 +7,9 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"db",
-		"schema",
-		"table",
-		"dt1",
-		"dt2",
-		"arg",
-		"colname",
-		"colsurname",
-		"colage",
-		"func"
+		"client",
+		"schemaName"
 	],
-	"name" : "PgDatabaseTest",
+	"name" : "PgScenarioTest",
 	"type" : "normal"
 }

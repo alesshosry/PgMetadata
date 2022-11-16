@@ -1,3 +1,4 @@
 tests
 testTypeBefore
-	self assert: (trigger isBefore).
+
+	self assert: trigger isBefore

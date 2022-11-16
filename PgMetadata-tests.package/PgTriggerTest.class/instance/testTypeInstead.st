@@ -1,3 +1,4 @@
 tests
 testTypeInstead
-	self assert: (trigger isInstead = false).
+
+	self deny: trigger isInstead
